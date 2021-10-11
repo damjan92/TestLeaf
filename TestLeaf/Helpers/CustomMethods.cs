@@ -43,6 +43,38 @@ namespace TestLeaf.Helpers
 			}
 		}
 
+		public bool isLinkWords(IWebElement webElement, IWebElement target)
+        {
+			webElement.Click();
+			if (target.Text.Contains("Locators and Selenium"))
+			{
+				Console.WriteLine("Home page  works and header is visiable");
+				Driver.Navigate().Back();
+				return true;
+			}
+			else
+			{
+				Console.WriteLine("HomePage  doesnt work and header is not visiable");
+				return false;
+			}
+		}
+		//Doesnt work
+		public bool IsHomePageVisiable(IWebElement webElement, IWebElement target)
+		{
+			webElement.Click();
+			if (target.Text.Contains("Locators and Selenium"))
+			{
+				Console.WriteLine("Home page is visiable");
+				Driver.Navigate().Back();
+				return true;
+			}
+			else
+			{
+				Console.WriteLine("HomePage is not visiable");
+				return false;
+			}
+		}
+
 		public void CustomWaitMethod(IWebElement webElement)
 		{
 			WebDriverWait wait = new WebDriverWait(Driver, TimeSpan.FromSeconds(15));
@@ -65,6 +97,14 @@ namespace TestLeaf.Helpers
 				.Build()
 				.Perform();
 		}
+
+		public void KeyboardActions(IWebElement webElement)
+        {
+			Actions actions = new Actions(Driver);
+			actions.MoveToElement(webElement)
+				.Click()
+				.Perform();
+        }
 
 		//Get methods
 		public void GetText(IWebElement webElement)

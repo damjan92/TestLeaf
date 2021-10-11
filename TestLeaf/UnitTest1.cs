@@ -41,6 +41,14 @@ namespace TestLeaf
 			Assert.Pass();
         }
 
+		[Test]
+		public void ImagePage()
+		{
+			ImagePage imagePage = new ImagePage();
+			imagePage.PerformImagePage();
+			Assert.Pass();
+		}
+
 		[TearDown]
 		public void Clean()
         {

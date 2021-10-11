@@ -3,6 +3,7 @@ using OpenQA.Selenium;
 using OpenQA.Selenium.Chrome;
 using TestLeaf.Helpers;
 using TestLeaf.Pages;
+using System.Threading;
 
 namespace TestLeaf
 {
@@ -46,6 +47,22 @@ namespace TestLeaf
 		{
 			ImagePage imagePage = new ImagePage();
 			imagePage.PerformImagePage();
+			Assert.Pass();
+		}
+
+		[Test]
+		public void DropDown()
+        {
+			DropdownPage dropdownPage = new DropdownPage();
+			dropdownPage.PerformDropdownPage();
+			Assert.Pass();
+		}
+
+		[Test]
+		public void RadioButton()
+        {
+			RadioButtonPage radioButton = new RadioButtonPage();
+			radioButton.PerformRadioButtonPage();
 			Assert.Pass();
 		}
 

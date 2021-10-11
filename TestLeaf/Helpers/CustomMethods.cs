@@ -29,6 +29,19 @@ namespace TestLeaf.Helpers
 			selectElement.SelectByText(text);
 		}
 
+		public void SelectElementByIndex(IWebElement webElement, int byIndex)
+        {
+			SelectElement selectElement = new SelectElement(webElement);
+			selectElement.SelectByIndex(byIndex);
+		}
+
+		public void AmountOfOption(IWebElement webElement)
+		{
+			SelectElement selectElement = new SelectElement(webElement);
+			var items = selectElement.Options.Count;
+            Console.WriteLine(items);
+		}
+
 		public bool IsEnabled(IWebElement webElement)
 		{
 			if (webElement.Enabled)
@@ -58,23 +71,7 @@ namespace TestLeaf.Helpers
 				return false;
 			}
 		}
-		//Doesnt work
-		public bool IsHomePageVisiable(IWebElement webElement, IWebElement target)
-		{
-			webElement.Click();
-			if (target.Text.Contains("Locators and Selenium"))
-			{
-				Console.WriteLine("Home page is visiable");
-				Driver.Navigate().Back();
-				return true;
-			}
-			else
-			{
-				Console.WriteLine("HomePage is not visiable");
-				return false;
-			}
-		}
-
+		
 		public void CustomWaitMethod(IWebElement webElement)
 		{
 			WebDriverWait wait = new WebDriverWait(Driver, TimeSpan.FromSeconds(15));
@@ -123,6 +120,7 @@ namespace TestLeaf.Helpers
 		{
 			webElement.Clear();
 		}
+
 
 	}
 }

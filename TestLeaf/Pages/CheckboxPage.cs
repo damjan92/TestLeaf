@@ -73,7 +73,6 @@ namespace TestLeaf.Pages
 			SelectLng();
 			IsSelected();
 			Deselect();
-			Thread.Sleep(2000);
 		}
 	}
 }

@@ -74,6 +74,12 @@ namespace TestLeaf
 			Assert.Pass();
 		}
 
+		[Test]
+		public void Table()
+        {
+			TablePage tablePage = new TablePage();
+			tablePage.PerformTablePage();
+        }
 		[TearDown]
 		public void Clean()
         {

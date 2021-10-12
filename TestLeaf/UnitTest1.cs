@@ -66,6 +66,14 @@ namespace TestLeaf
 			Assert.Pass();
 		}
 
+		[Test]
+		public void CheckBox()
+        {
+			CheckboxPage checkbox = new CheckboxPage();
+			checkbox.PerformCheckBoxPage();
+			Assert.Pass();
+		}
+
 		[TearDown]
 		public void Clean()
         {

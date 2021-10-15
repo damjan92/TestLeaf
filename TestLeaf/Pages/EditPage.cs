@@ -13,7 +13,7 @@ namespace TestLeaf.Pages
 		IWebElement editLink => Driver.FindElement(By.XPath("//a[@href='pages/Edit.html']"));
 		IWebElement emailField => Driver.FindElement(By.CssSelector("#email"));
 		IWebElement appendField => Driver.FindElement(By.XPath("//input[@value='Append ']"));
-		IWebElement defaultText => Driver.FindElement(By.XPath("//input[@value='TestLeaf']"));
+		IWebElement defaultText => Driver.FindElement(By.CssSelector("input[value='TestLeaf']"));
 		IWebElement clearText => Driver.FindElement(By.XPath("//input[@value='Clear me!!']"));
 		IWebElement isEnabled => Driver.FindElement(By.XPath("//input[@disabled='true']"));
 

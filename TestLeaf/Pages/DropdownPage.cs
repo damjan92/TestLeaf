@@ -16,6 +16,7 @@ namespace TestLeaf.Pages
         IWebElement sumOfOption => Driver.FindElement(By.CssSelector(".dropdown"));
         IWebElement sendKeysDdm => Driver.FindElement(By.XPath("//div[5]//select[1]"));
         IWebElement dropdownOneClick => Driver.FindElement(By.XPath("//div[6]//select[1]//option[4]"));
+
         CustomMethods customMethods = new CustomMethods();
 
        

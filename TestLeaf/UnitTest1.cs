@@ -3,7 +3,6 @@ using OpenQA.Selenium;
 using OpenQA.Selenium.Chrome;
 using TestLeaf.Helpers;
 using TestLeaf.Pages;
-using System.Threading;
 
 namespace TestLeaf
 {
@@ -80,10 +79,35 @@ namespace TestLeaf
 			TablePage tablePage = new TablePage();
 			tablePage.PerformTablePage();
         }
+
+		[Test]
+		public void Alert()
+        {
+			AlertsPage alertsPage = new AlertsPage();
+			alertsPage.PerformAlertPage();
+			Assert.Pass();
+        }
+
+		[Test]
+		public void IFrame()
+        {
+			IFramePage framePage = new IFramePage();
+			framePage.PerformIFramePage();
+			Assert.Pass();
+        }
+		
+		[Test]
+		public void Window()
+        {
+			WindowPage windowPage = new WindowPage();
+			windowPage.PerformWindowPage();
+			Assert.Pass();
+        }
+
 		[TearDown]
 		public void Clean()
         {
 			Driver.Quit();
-		}
+        }
 	}
 }

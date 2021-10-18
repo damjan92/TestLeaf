@@ -104,6 +104,45 @@ namespace TestLeaf
 			Assert.Pass();
         }
 
+		[Test]
+		public void Calendar()
+        {
+			CalendarPage calendarPage = new CalendarPage();
+			calendarPage.PerformCalendarPage();
+			Assert.Pass();
+        }
+
+		[Test]
+		public void Drag()
+        {
+			DragPage dragPage = new DragPage();
+			dragPage.PerformDragPage();
+			Assert.Pass();
+        }
+
+		[Test]
+		public void Drop()
+        {
+			DropPage dropPage = new DropPage();
+			dropPage.PerformDropPage();
+			Assert.Pass();
+        }
+
+		[Test]
+		public void Selectable()
+        {
+			SelectablePage selectablePage = new SelectablePage();
+			selectablePage.PerformSelectablePage();
+			Assert.Pass();
+        }
+
+		[Test]
+		public void Sortable()
+        {
+			SortablePage sortablePage = new SortablePage();
+			sortablePage.PerformSortablePage();
+			Assert.Pass();
+        }
 		[TearDown]
 		public void Clean()
         {

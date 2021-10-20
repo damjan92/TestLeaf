@@ -143,6 +143,14 @@ namespace TestLeaf
 			sortablePage.PerformSortablePage();
 			Assert.Pass();
         }
+
+		[Test]
+		public void AutoComplete()
+        {
+			AutocompletePage autocompletePage = new AutocompletePage();
+			autocompletePage.PerformAutocompletePage();
+        }
+
 		[TearDown]
 		public void Clean()
         {

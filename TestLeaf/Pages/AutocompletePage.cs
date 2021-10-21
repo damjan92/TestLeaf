@@ -18,9 +18,6 @@ namespace TestLeaf.Pages
 
 
 		CustomMethods customMethods = new CustomMethods();
-
-		
-
 		
 		public void AutoComplete(string ch)
 		{
@@ -31,22 +28,25 @@ namespace TestLeaf.Pages
 
 			if (ch == "se" || ch == "sel")
             {
-				Thread.Sleep(1000);
+				Thread.Sleep(500);
 				actions.SendKeys(Keys.Down).Click().Build().Perform();
                 Console.WriteLine("Selenium is selected");
 			}
 			else if (ch == "so" || ch == "soa")
 			{
+				Thread.Sleep(500);
 				actions.SendKeys(Keys.Down).Click().Build().Perform();
 				Console.WriteLine("Soap is selected");
 			}
 			else if (ch == "ap" || ch == "app")
 			{
+				Thread.Sleep(500);
 				actions.SendKeys(Keys.Down).Click().Build().Perform();
 				Console.WriteLine("Appium is selected");
 			}
 			else if (ch == "pr" || ch == "pro")
 			{
+				Thread.Sleep(500);
 				actions.SendKeys(Keys.Down).Click().Build().Perform();
 				Console.WriteLine("Protactor is selected");
 			}
@@ -58,7 +58,7 @@ namespace TestLeaf.Pages
 			customMethods.Click(AutocompleteClk);
 			
 			AutoComplete("sel");
-			Thread.Sleep(1000);
+			Thread.Sleep(500);
 		}
 	}
 }

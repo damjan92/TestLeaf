@@ -11,7 +11,8 @@ namespace TestLeaf
 		[SetUp]
 		public void Setup()
 		{
-			Driver = new ChromeDriver();
+			ChromeOptions chromeOptions = new ChromeOptions();
+			Driver = new ChromeDriver(chromeOptions);
 			Driver.Navigate().GoToUrl("http://www.leafground.com/");
 			Driver.Manage().Window.Maximize();
 		}
@@ -149,6 +150,37 @@ namespace TestLeaf
         {
 			AutocompletePage autocompletePage = new AutocompletePage();
 			autocompletePage.PerformAutocompletePage();
+        }
+
+		[Test]
+		public void Download()
+        {
+			DownloadPage downloadPage = new DownloadPage();
+			downloadPage.PerfromDownloadPage();
+			Assert.Pass();
+        }
+
+		[Test]
+		public void Upload()
+		{
+			UploadPage uploadPage = new UploadPage();
+			uploadPage.PerformUploadPage();	
+		}
+
+		[Test]
+		public void ToolTip()
+        {
+			ToolTipPage toolTip = new ToolTipPage();
+			toolTip.PerformToolTipPage();
+        }
+
+		[Test]
+		public void WaitTo()
+        {
+			WaitMethods waitToDisappear = new WaitMethods();
+            waitToDisappear.PerformWaitToDisappear();
+            waitToDisappear.PerformWaitToAppear();
+            waitToDisappear.PerformWaitForChange();
         }
 
 		[TearDown]

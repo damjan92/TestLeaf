@@ -86,6 +86,19 @@ namespace TestLeaf.Helpers
 			});
 		}
 
+		public void CustomWaitMethodDisappear(IWebElement webElement)
+		{
+			WebDriverWait wait = new WebDriverWait(Driver, TimeSpan.FromSeconds(15));
+			wait.Until(d =>
+			{
+				if (!webElement.Displayed)
+				{
+					Console.WriteLine("Element is disappear");
+					return webElement;
+				}
+				return null;
+			});
+		}
 		public void ActionsKeys(IWebElement webElement, string text)
 		{
 			Actions actions = new Actions(Driver);

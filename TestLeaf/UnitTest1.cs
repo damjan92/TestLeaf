@@ -181,6 +181,21 @@ namespace TestLeaf
             waitToDisappear.PerformWaitToDisappear();
             waitToDisappear.PerformWaitToAppear();
             waitToDisappear.PerformWaitForChange();
+            waitToDisappear.PerformWaitForAlert();
+        }
+
+		[Test]
+		public void MouseHover()
+        {
+			MouseHoverPage mouseHover = new MouseHoverPage();
+			mouseHover.PerformHover();
+        }
+
+		[Test]
+		public void WebTable()
+        {
+			WebTablePage webTable = new WebTablePage();
+			webTable.PerformWebTeblePage();
         }
 
 		[TearDown]

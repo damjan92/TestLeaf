@@ -198,3 +198,14 @@ C:\Users\DamjanDosen\source\repos\TestLeaf-master\TestLeaf\obj\Debug\netcoreapp3
 C:\Users\DamjanDosen\source\repos\TestLeaf-master\TestLeaf\obj\Debug\netcoreapp3.1\TestLeaf.dll
 C:\Users\DamjanDosen\source\repos\TestLeaf-master\TestLeaf\obj\Debug\netcoreapp3.1\TestLeaf.pdb
 C:\Users\DamjanDosen\source\repos\TestLeaf-master\TestLeaf\obj\Debug\netcoreapp3.1\TestLeaf.genruntimeconfig.cache
+C:\Users\DamjanDosen\source\repos\TestLeaf-master\TestLeaf\bin\Debug\netcoreapp3.1\Microsoft.Extensions.DependencyInjection.dll
+C:\Users\DamjanDosen\source\repos\TestLeaf-master\TestLeaf\bin\Debug\netcoreapp3.1\Microsoft.Extensions.DependencyInjection.Abstractions.dll
+C:\Users\DamjanDosen\source\repos\TestLeaf-master\TestLeaf\bin\Debug\netcoreapp3.1\Microsoft.Extensions.Logging.dll
+C:\Users\DamjanDosen\source\repos\TestLeaf-master\TestLeaf\bin\Debug\netcoreapp3.1\Microsoft.Extensions.Logging.Abstractions.dll
+C:\Users\DamjanDosen\source\repos\TestLeaf-master\TestLeaf\bin\Debug\netcoreapp3.1\Microsoft.Extensions.Options.dll
+C:\Users\DamjanDosen\source\repos\TestLeaf-master\TestLeaf\bin\Debug\netcoreapp3.1\Microsoft.Extensions.Primitives.dll
+C:\Users\DamjanDosen\source\repos\TestLeaf-master\TestLeaf\bin\Debug\netcoreapp3.1\Serilog.dll
+C:\Users\DamjanDosen\source\repos\TestLeaf-master\TestLeaf\bin\Debug\netcoreapp3.1\Serilog.Sinks.Console.dll
+C:\Users\DamjanDosen\source\repos\TestLeaf-master\TestLeaf\bin\Debug\netcoreapp3.1\Serilog.Sinks.Debug.dll
+C:\Users\DamjanDosen\source\repos\TestLeaf-master\TestLeaf\bin\Debug\netcoreapp3.1\Serilog.Sinks.File.dll
+C:\Users\DamjanDosen\source\repos\TestLeaf-master\TestLeaf\bin\Debug\netcoreapp3.1\System.Diagnostics.DiagnosticSource.dll

@@ -19,13 +19,15 @@ namespace TestLeaf.Pages
 		IWebElement SweetAlert => Driver.FindElement(By.CssSelector("#btn"));
 
 		CustomMethods customMethods = new CustomMethods();
+		CustomLogger customLogger = new CustomLogger();
 
-        public void ClickAlertBox()
+		public void ClickAlertBox()
         {
             customMethods.Click(AlertBoxClk);
 			var alert = Driver.SwitchTo().Alert();
 			alert.Accept();
-            Console.WriteLine("Alert is accpeted");
+			//Console.WriteLine("Alert is accpeted");
+			customLogger.LogInfo("Alert is accepted");
 
         }
 
@@ -36,11 +38,13 @@ namespace TestLeaf.Pages
 			alert.Accept();
 			if (resultAlert.Displayed == true)
             {
-                Console.WriteLine("You pressed OK");
+				//Console.WriteLine("You pressed OK");
+				customLogger.LogInfo("You pressed OK");
 				return true;
             } else
             {
-                Console.WriteLine("You didnt press ok");
+				//Console.WriteLine("You didnt press ok");
+				customLogger.LogDebug("You did not press ok");
 				return false;
             }
         }
@@ -52,12 +56,14 @@ namespace TestLeaf.Pages
 			alert.Accept();
 			if (!resultPromt.Text.Contains("not") == true)
 			{
-				Console.WriteLine("You are enjoying Testleaf");
+				//Console.WriteLine("You are enjoying Testleaf");
+				customLogger.LogInfo("You are enjoying Testleaf");
 				return true;
 			}
 			else
 			{
-				Console.WriteLine("You are not enjoying Testleaf");
+				//Console.WriteLine("You are not enjoying Testleaf");
+				customLogger.LogDebug("You are not enjoying Testleaf");
 				return false;
 			}
 		}
@@ -67,6 +73,7 @@ namespace TestLeaf.Pages
 			customMethods.Click(LineBreak);
 			var alert = Driver.SwitchTo().Alert();
             Console.WriteLine("Alert text is  \n" + alert.Text);
+			customLogger.LogInfo("Alert text is  \n" + alert.Text);
 			alert.Accept();
         }
 
@@ -88,7 +95,6 @@ namespace TestLeaf.Pages
 			Thread.Sleep(500);
 			getAlerTText();
 			//SweetAlertBtn();
-			//Thread.Sleep(500);
 		}
 	}
 }

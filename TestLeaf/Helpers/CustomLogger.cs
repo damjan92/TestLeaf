@@ -30,5 +30,15 @@ namespace TestLeaf.Helpers
 			Log.Debug(info);
 		}
 
-	}
+		public void LogWarn(string info)
+        {
+			Log.Warning(info);
+        }
+
+		public ILogger Logger(string info)
+        {
+			return Log.Logger;
+        }
+
+    }
 }

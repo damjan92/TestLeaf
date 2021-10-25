@@ -44,7 +44,8 @@ namespace TestLeaf.Pages
             } else
             {
 				//Console.WriteLine("You didnt press ok");
-				customLogger.LogDebug("You did not press ok");
+				customLogger.LogWarn("You did not press ok");
+				customMethods.TakeScreenshot(AlertConfirm);
 				return false;
             }
         }
@@ -63,7 +64,8 @@ namespace TestLeaf.Pages
 			else
 			{
 				//Console.WriteLine("You are not enjoying Testleaf");
-				customLogger.LogDebug("You are not enjoying Testleaf");
+				customLogger.LogWarn("You are not enjoying Testleaf");
+				customMethods.TakeScreenshot(PromtAlert);
 				return false;
 			}
 		}

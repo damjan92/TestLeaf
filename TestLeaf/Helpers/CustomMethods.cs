@@ -134,6 +134,16 @@ namespace TestLeaf.Helpers
 			webElement.Clear();
 		}
 
+		// Create Screenshot
+		public void TakeScreenshot(IWebElement webElement)
+        {
+			Actions actions = new Actions(Driver);
+			actions.MoveToElement(webElement)
+				.Click()
+				.Perform();
+			((ITakesScreenshot)Driver).GetScreenshot().SaveAsFile("Test.png", ScreenshotImageFormat.Png);
+        }
+
 
 	}
 }

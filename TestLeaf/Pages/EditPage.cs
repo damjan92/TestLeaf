@@ -24,12 +24,12 @@ namespace TestLeaf.Pages
         {
             customMethods.Click(editLink);
             customMethods.EnterText(emailField, text);
-			Thread.Sleep(1000);
+			Thread.Sleep(500);
 			customMethods.ActionsKeys(appendField, appendTxt);
             customMethods.GetText(defaultText);
-			Thread.Sleep(1000);
+			Thread.Sleep(500);
 			customMethods.ClearText(clearText);
-			Thread.Sleep(1000);
+			Thread.Sleep(500);
 			customMethods.IsEnabled(isEnabled);
         }
 	}

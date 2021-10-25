@@ -12,12 +12,14 @@ namespace TestLeaf.Pages
 		IWebElement CalenadarInput => Driver.FindElement(By.CssSelector("#datepicker"));
 		IList<IWebElement> Dates => Driver.FindElements(By.ClassName("ui-state-default"));
 		IWebElement TheTenthDay => Driver.FindElement(By.LinkText("10"));
+
 		CustomMethods customMethods = new CustomMethods();
+		CustomLogger customLogger = new CustomLogger();
 
 		public void SelectTheDate()
         {
 			customMethods.Click(CalenadarInput);
-            Console.WriteLine("Days: " + Dates.Count);
+            customLogger.LogInfo("Days: " + Dates.Count);
 			customMethods.Click(TheTenthDay);
 
         }

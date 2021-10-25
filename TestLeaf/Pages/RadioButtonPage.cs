@@ -19,15 +19,16 @@ namespace TestLeaf.Pages
 		IWebElement thirdValue => Driver.FindElement(By.XPath("//input[@value='2']"));
 
 		CustomMethods customMethods = new CustomMethods();
+		CustomLogger customLogger = new CustomLogger();
 
 		public void DefaultBtn()
         {
 			if (defaultBtn.Text.Contains("Checked"))
             {
-                Console.WriteLine("Check button is already clicked");
+                customLogger.LogInfo("Check button is already clicked");
             } else
             {
-                Console.WriteLine("Uncheck button is unchecked");
+				customLogger.LogInfo("Uncheck button is unchecked");
 				customMethods.Click(uncheckedBtn);
             }
         }
@@ -36,17 +37,17 @@ namespace TestLeaf.Pages
         {
 			if (AgeButtons.Text.Contains("21"))
 			{
-                Console.WriteLine("My group age is clicked");
+				customLogger.LogInfo("My group age is clicked");
             }
 			else if (AgeButtons.Text.Contains("20"))
             {
 				customMethods.Click(firstValue);
-                Console.WriteLine("1-20 group age is selected");
+				customLogger.LogInfo("1-20 group age is selected");
             }
 			else
             {
 				customMethods.Click(thirdValue);
-				Console.WriteLine("Above 40 group age is selected");
+				customLogger.LogInfo("Above 40 group age is selected");
 			}
         }
 
@@ -56,7 +57,7 @@ namespace TestLeaf.Pages
 			customMethods.Click(yesOption);
 			DefaultBtn();
 			AgeChecker();
-			Thread.Sleep(1500);
+			//Thread.Sleep(1500);
 		}
 	}
 }

@@ -19,7 +19,7 @@ namespace TestLeaf
 
 		//TODO Fix the getText method
 		[Test]
-		public void Edit()
+		public void TestEdit()
 		{
 			EditPage editPage = new EditPage();
 			editPage.PerformEditPage("email@email", "appende text");
@@ -27,7 +27,7 @@ namespace TestLeaf
 		}
 
 		[Test]
-		public void Button()
+		public void TestButton()
         {
 			ButtonPage buttonPage = new ButtonPage();
 			buttonPage.PerformButtonPage();
@@ -35,7 +35,7 @@ namespace TestLeaf
 		}
 
 		[Test]
-		public void HyperLinks()
+		public void TestHyperLinks()
         {
 			HyperLinkPage hyperLinkPage = new HyperLinkPage();
 			hyperLinkPage.PerformHyperLink();
@@ -43,7 +43,7 @@ namespace TestLeaf
         }
 
 		[Test]
-		public void ImagePage()
+		public void TestImagePage()
 		{
 			ImagePage imagePage = new ImagePage();
 			imagePage.PerformImagePage();
@@ -51,7 +51,7 @@ namespace TestLeaf
 		}
 
 		[Test]
-		public void DropDown()
+		public void TestDropDown()
         {
 			DropdownPage dropdownPage = new DropdownPage();
 			dropdownPage.PerformDropdownPage();
@@ -59,7 +59,7 @@ namespace TestLeaf
 		}
 
 		[Test]
-		public void RadioButton()
+		public void TestRadioButton()
         {
 			RadioButtonPage radioButton = new RadioButtonPage();
 			radioButton.PerformRadioButtonPage();
@@ -67,7 +67,7 @@ namespace TestLeaf
 		}
 
 		[Test]
-		public void CheckBox()
+		public void TestCheckBox()
         {
 			CheckboxPage checkbox = new CheckboxPage();
 			checkbox.PerformCheckBoxPage();
@@ -75,14 +75,14 @@ namespace TestLeaf
 		}
 
 		[Test]
-		public void Table()
+		public void TestTable()
         {
 			TablePage tablePage = new TablePage();
 			tablePage.PerformTablePage();
         }
 
 		[Test]
-		public void Alert()
+		public void TestAlert()
         {
 			AlertsPage alertsPage = new AlertsPage();
 			alertsPage.PerformAlertPage();
@@ -90,7 +90,7 @@ namespace TestLeaf
         }
 
 		[Test]
-		public void IFrame()
+		public void TestIFrame()
         {
 			IFramePage framePage = new IFramePage();
 			framePage.PerformIFramePage();
@@ -98,7 +98,7 @@ namespace TestLeaf
         }
 		
 		[Test]
-		public void Window()
+		public void TestWindow()
         {
 			WindowPage windowPage = new WindowPage();
 			windowPage.PerformWindowPage();
@@ -106,7 +106,7 @@ namespace TestLeaf
         }
 
 		[Test]
-		public void Calendar()
+		public void TestCalendar()
         {
 			CalendarPage calendarPage = new CalendarPage();
 			calendarPage.PerformCalendarPage();
@@ -114,7 +114,7 @@ namespace TestLeaf
         }
 
 		[Test]
-		public void Drag()
+		public void TestDrag()
         {
 			DragPage dragPage = new DragPage();
 			dragPage.PerformDragPage();
@@ -122,7 +122,7 @@ namespace TestLeaf
         }
 
 		[Test]
-		public void Drop()
+		public void TestDrop()
         {
 			DropPage dropPage = new DropPage();
 			dropPage.PerformDropPage();
@@ -130,7 +130,7 @@ namespace TestLeaf
         }
 
 		[Test]
-		public void Selectable()
+		public void TestSelectable()
         {
 			SelectablePage selectablePage = new SelectablePage();
 			selectablePage.PerformSelectablePage();
@@ -138,7 +138,7 @@ namespace TestLeaf
         }
 
 		[Test]
-		public void Sortable()
+		public void TestSortable()
         {
 			SortablePage sortablePage = new SortablePage();
 			sortablePage.PerformSortablePage();
@@ -146,14 +146,14 @@ namespace TestLeaf
         }
 
 		[Test]
-		public void AutoComplete()
+		public void TestAutoComplete()
         {
 			AutocompletePage autocompletePage = new AutocompletePage();
 			autocompletePage.PerformAutocompletePage();
         }
 
 		[Test]
-		public void Download()
+		public void TestDownload()
         {
 			DownloadPage downloadPage = new DownloadPage();
 			downloadPage.PerfromDownloadPage();
@@ -161,21 +161,21 @@ namespace TestLeaf
         }
 
 		[Test]
-		public void Upload()
+		public void TestUpload()
 		{
 			UploadPage uploadPage = new UploadPage();
 			uploadPage.PerformUploadPage();	
 		}
 
 		[Test]
-		public void ToolTip()
+		public void TestToolTip()
         {
 			ToolTipPage toolTip = new ToolTipPage();
 			toolTip.PerformToolTipPage();
         }
 
 		[Test]
-		public void WaitTo()
+		public void TestWaitTo()
         {
 			WaitMethods waitToDisappear = new WaitMethods();
             waitToDisappear.PerformWaitToDisappear();
@@ -185,14 +185,14 @@ namespace TestLeaf
         }
 
 		[Test]
-		public void MouseHover()
+		public void TestMouseHover()
         {
 			MouseHoverPage mouseHover = new MouseHoverPage();
 			mouseHover.PerformHover();
         }
 
 		[Test]
-		public void WebTable()
+		public void TestWebTable()
         {
 			WebTablePage webTable = new WebTablePage();
 			webTable.PerformWebTeblePage();

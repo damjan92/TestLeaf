@@ -24,7 +24,7 @@ namespace TestLeaf.Pages
 		IWebElement ClickAlert => Driver.FindElement(By.CssSelector("#alert"));
 
 		CustomMethods customMethods = new CustomMethods();
-
+		CustomLogger customLogger = new CustomLogger();
 	   
 
 		public void PerformWaitToDisappear()
@@ -50,7 +50,7 @@ namespace TestLeaf.Pages
 			{
 				if (ChangingBtn.Displayed && ChangingBtn.Text.Contains("Click"))
 				{
-					Console.WriteLine("Element is changed");
+					customLogger.LogInfo("Element is changed");
 					return ChangingBtn;
 				}
 				return null;
@@ -71,7 +71,7 @@ namespace TestLeaf.Pages
 
 				if (alert != null)
                 {
-                    Console.WriteLine("Alert is active");
+					customLogger.LogInfo("Alert is active");
 					alert.Accept();
 					return alert;
                 }

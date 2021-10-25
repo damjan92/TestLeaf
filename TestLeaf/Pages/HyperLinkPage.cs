@@ -16,18 +16,20 @@ namespace TestLeaf.Pages
 		IWebElement httpStatus => Driver.FindElement(By.TagName("h1"));
 
 		CustomMethods customMethods = new CustomMethods();
+		CustomLogger customLogger = new CustomLogger();
 
 		public void homePageLink()
 		{
 			customMethods.Click(homepagelnk);
 			if (headerTag.Displayed)
 			{
-				Console.WriteLine("Home page link works");
+				customLogger.LogInfo("Home page link works");
 				Driver.Navigate().Back();
 			}
 			else
 			{
-				Console.WriteLine("HomePage link doesnt work");
+				customLogger.LogWarn("HomePage link doesnt work");
+				customMethods.TakeScreenshot(homepagelnk);
 			}
 		}
 
@@ -35,7 +37,7 @@ namespace TestLeaf.Pages
         {
 			customMethods.Click(destinationLnk);
 			var dest = Driver.Url;
-            Console.WriteLine("URL is: " + dest);
+			customLogger.LogInfo("URL is: " + dest);
 			Driver.Navigate().Back();
 		}
 
@@ -44,13 +46,13 @@ namespace TestLeaf.Pages
 			customMethods.Click(isBroken);
 			if (httpStatus.Text.Contains("404"))
             {
-                Console.WriteLine("Site is not available, msg is 404");
+				customLogger.LogInfo("Site is not available, msg is 404");
 				Driver.Navigate().Back();
 				return false;
             } 
 			else
             {
-				Console.WriteLine("Site is available");
+				customLogger.LogInfo("Site is available");
 				return true;
 			}
         }

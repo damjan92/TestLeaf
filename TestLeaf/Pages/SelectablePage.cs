@@ -15,7 +15,6 @@ namespace TestLeaf.Pages
 
         CustomMethods customMethods = new CustomMethods();
 
-
         public void Selecting()
         {
             Actions actions = new Actions(Driver);

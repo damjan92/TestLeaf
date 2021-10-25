@@ -17,38 +17,40 @@ namespace TestLeaf.Pages
 		IWebElement dimensionBtn => Driver.FindElement(By.Id("size"));
 
 		CustomMethods customMethods = new CustomMethods();
+		CustomLogger customLogger = new CustomLogger();
 
 		public void homePageButton()
 		{
 			customMethods.Click(homeBtn);
 			if (headerTag.Displayed)
 			{
-				Console.WriteLine("Home page button works");
+				customLogger.LogInfo("Home page button works");
 				Driver.Navigate().Back();
 			} 
 			else
 			{
-				Console.WriteLine("HomePage button doesnt work");
+				customLogger.LogWarn("HomePage button doesnt work");
+				customMethods.TakeScreenshot(homeBtn);
 			}
 		}
 
 		public void getButtonPositon()
 		{
 			customMethods.Click(positionBtn);
-			Console.WriteLine("Position X: " + positionBtn.Location.X.ToString()
+			customLogger.LogInfo("Position X: " + positionBtn.Location.X.ToString()
 				+ " Position Y: " + positionBtn.Location.Y.ToString());
 		}
 
 		public void getButtonColour()
         {
 			customMethods.Click(colorBtn);
-            Console.WriteLine("Color is: " + colorBtn.GetCssValue("background-color"));
+			customLogger.LogInfo("Color is: " + colorBtn.GetCssValue("background-color"));
         }
 
 		public void getButtonDimension()
         {
 			customMethods.Click(dimensionBtn);
-            Console.WriteLine("Height: " + dimensionBtn.Size.Height + " Width: " + dimensionBtn.Size.Width);
+			customLogger.LogInfo("Height: " + dimensionBtn.Size.Height + " Width: " + dimensionBtn.Size.Width);
 		}
 
 		public void PerformButtonPage()

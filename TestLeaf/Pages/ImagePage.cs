@@ -16,18 +16,20 @@ namespace TestLeaf.Pages
 		IWebElement keyboardImg => Driver.FindElement(By.XPath("//img[@src='../images/keyboard.png']"));
 
 		CustomMethods customMethods = new CustomMethods();
+		CustomLogger customLogger = new CustomLogger();
+
 
 		public void homePageImg()
 		{
 			customMethods.Click(imageIcn);
 			if (headerTag.Enabled)
 			{
-				Console.WriteLine("Home page Image works");
+				customLogger.LogInfo("Home page Image works");
 				Driver.Navigate().Back();
 			}
 			else
 			{
-				Console.WriteLine("HomePage Image doesnt work");
+				customLogger.LogWarn("HomePage Image doesnt work");
 			}
 		}
 
@@ -38,7 +40,6 @@ namespace TestLeaf.Pages
 			customMethods.isLinkWords(brokenImg, headerTag);
 			customMethods.KeyboardActions(keyboardImg);
 			customMethods.CustomWaitMethod(headerTag);
-			Thread.Sleep(1500);
 		}
 	}
 }

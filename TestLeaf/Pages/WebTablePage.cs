@@ -28,7 +28,7 @@ namespace TestLeaf.Pages
 		public void PerformWebTeblePage()
 		{
 			customMethods.Click(WebTableClk);
-			Thread.Sleep(1000);
+			Thread.Sleep(500);
 			getNames();
 		}
 

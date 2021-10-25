@@ -16,8 +16,8 @@ namespace TestLeaf.Pages
 		IWebElement suggestMenu => Driver.FindElement(By.ClassName("ui-menu-item-wrapper"));
 		IWebElement uiMenu => Driver.FindElement(By.ClassName("ui-menu-item-wrapper"));
 
-
 		CustomMethods customMethods = new CustomMethods();
+		CustomLogger customLogger = new CustomLogger();
 		
 		public void AutoComplete(string ch)
 		{
@@ -27,28 +27,28 @@ namespace TestLeaf.Pages
 			//customMethods.CustomWaitMethod(uiMenu);
 
 			if (ch == "se" || ch == "sel")
-            {
+			{
 				Thread.Sleep(500);
 				actions.SendKeys(Keys.Down).Click().Build().Perform();
-                Console.WriteLine("Selenium is selected");
+				customLogger.LogInfo("Selenium is selected");
 			}
 			else if (ch == "so" || ch == "soa")
 			{
 				Thread.Sleep(500);
 				actions.SendKeys(Keys.Down).Click().Build().Perform();
-				Console.WriteLine("Soap is selected");
+				customLogger.LogInfo("Soap is selected");
 			}
 			else if (ch == "ap" || ch == "app")
 			{
 				Thread.Sleep(500);
 				actions.SendKeys(Keys.Down).Click().Build().Perform();
-				Console.WriteLine("Appium is selected");
+				customLogger.LogInfo("Appium is selected");
 			}
 			else if (ch == "pr" || ch == "pro")
 			{
 				Thread.Sleep(500);
 				actions.SendKeys(Keys.Down).Click().Build().Perform();
-				Console.WriteLine("Protactor is selected");
+				customLogger.LogInfo("Protactor is selected");
 			}
 
 		}

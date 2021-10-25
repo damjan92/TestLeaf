@@ -37,7 +37,7 @@ namespace TestLeaf.Pages
             } else
             {
 				//Console.WriteLine("Fail");
-				customLogger.LogDebug("You did not selected selenium");
+				customLogger.LogWarn("You did not selected selenium");
             }
 			alert.Accept();
 		}

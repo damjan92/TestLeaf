@@ -17,6 +17,7 @@ namespace TestLeaf.Pages
         IWebElement XlxDownload => Driver.FindElement(By.LinkText("Download Excel"));
 
         CustomMethods customMethods = new CustomMethods();
+        CustomLogger customLogger = new CustomLogger();
 
         public void VerifyFileDownload()
         {
@@ -32,12 +33,11 @@ namespace TestLeaf.Pages
 
             if (File.Exists(expectedPath) == true)
             {
-                Console.WriteLine("File are downloaded");
+                customLogger.LogInfo("File are downloaded");
             } else
             {
-                Console.WriteLine("File are not downloaded");
+                customLogger.LogWarn("File are not downloaded");
             }
-            
         }
 
         public void PerfromDownloadPage()

@@ -25,24 +25,25 @@ namespace TestLeaf.Pages
 	
 
         CustomMethods customMethods = new CustomMethods();
+		CustomLogger customLogger = new CustomLogger();
 
 		public void SelectLng()
 		{
 			customMethods.Click(selectJava);
 			customMethods.Click(selectVB);
-			Console.WriteLine("Languages are selected");
+			customLogger.LogInfo("Languages are selected");
 		}
 
 		public bool IsSelected()
 		{
 			if(IsSeleneiumSlctd.Selected == true)
 			{
-				Console.WriteLine("Checkbox is selected");
+				customLogger.LogInfo("Checkbox is selected");
 				return true;
 			}
 			else
 			{
-				Console.WriteLine("Checkbox is not selected");
+				customLogger.LogWarn("Checkbox is not selected");
 				return false;
 			}
 		}
@@ -51,12 +52,12 @@ namespace TestLeaf.Pages
         {
 			if (deselectCb.Selected == true)
             {
-                Console.WriteLine("Checkbox is already selected");
+				customLogger.LogInfo("Checkbox is already selected");
 				return true;
             }
 			else
             {
-				Console.WriteLine("Checkbox is not selected, Click!");
+				customLogger.LogWarn("Checkbox is not selected, Click!");
 				customMethods.Click(deselectCb);
 				return false;
 			}

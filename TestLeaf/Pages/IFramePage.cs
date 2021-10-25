@@ -19,6 +19,7 @@ namespace TestLeaf.Pages
 		IWebElement SecondFrClk => Driver.FindElement(By.CssSelector("#Click1"));
 
 		CustomMethods customMethods = new CustomMethods();
+		CustomLogger customLogger = new CustomLogger();
 
 		public void iframeClick()
 		{
@@ -26,11 +27,11 @@ namespace TestLeaf.Pages
 			customMethods.Click(FrameClick);
 			if (FrameClick.Text.Contains("Clicked"))
 			{
-				Console.WriteLine("You clicked the button");
+				customLogger.LogInfo("You clicked the button");
 			}
 			else
 			{
-				Console.WriteLine("You missed the frame");
+				customLogger.LogWarn("You missed the frame");
 			}
 			Driver.SwitchTo().DefaultContent();
 		}
@@ -42,11 +43,11 @@ namespace TestLeaf.Pages
 			customMethods.Click(SecondFrClk);
 			if (SecondFrClk.Text.Contains("Clicked"))
 			{
-				Console.WriteLine("You clicked the button");
+				customLogger.LogInfo("You clicked the button");
 			}
 			else
 			{
-				Console.WriteLine("You missed the frame");
+				customLogger.LogWarn("You missed the frame");
 			}
 			Driver.SwitchTo().DefaultContent();
 		}

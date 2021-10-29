@@ -10,6 +10,7 @@ namespace TestLeaf.Helpers
 {
 	class CustomMethods : DriverHelper
 	{
+		CustomLogger customLogger = new CustomLogger();
 
 		//Set methods
 		public void EnterText(IWebElement webElement, string text) => webElement.SendKeys(text);
@@ -46,12 +47,12 @@ namespace TestLeaf.Helpers
 		{
 			if (webElement.Enabled)
 			{
-				Console.WriteLine("Field is enabled");
+				customLogger.LogInfo("Field is enabled");
 				return true;
 			}
 			else
 			{
-				Console.WriteLine("Field is not enabled");
+				customLogger.LogInfo("Field is not enabled");
 				return false;
 			}
 		}
@@ -61,13 +62,13 @@ namespace TestLeaf.Helpers
 			webElement.Click();
 			if (target.Text.Contains("Locators and Selenium"))
 			{
-				Console.WriteLine("Home page  works and header is visiable");
+				customLogger.LogInfo("Home page  works and header is visiable");
 				Driver.Navigate().Back();
 				return true;
 			}
 			else
 			{
-				Console.WriteLine("HomePage  doesnt work and header is not visiable");
+				customLogger.LogInfo("HomePage  doesnt work and header is not visiable");
 				return false;
 			}
 		}
@@ -79,7 +80,7 @@ namespace TestLeaf.Helpers
 			{ 
 				if (webElement.Displayed)
 				{
-					Console.WriteLine("Element is displayed");
+					customLogger.LogInfo("Element is displayed");
 					return webElement;
 				}
 				return null;
@@ -93,7 +94,7 @@ namespace TestLeaf.Helpers
 			{
 				if (!webElement.Displayed)
 				{
-					Console.WriteLine("Element is disappear");
+					customLogger.LogInfo("Element is disappear");
 					return webElement;
 				}
 				return null;
@@ -118,14 +119,14 @@ namespace TestLeaf.Helpers
 
 		//Get methods
 		public void GetText(IWebElement webElement)
-		{
+        {
 			if (webElement.Displayed)
 			{
-				Console.WriteLine("The text is " + webElement.Text);
+				customLogger.LogInfo("The text is: " + webElement.GetAttribute("value"));
 			}
 			else
 			{
-				Console.WriteLine("Field is not enabled, visiable or is empty");
+				customLogger.LogInfo("Field is not enabled, visiable or is empty");
 			}
 		}
 

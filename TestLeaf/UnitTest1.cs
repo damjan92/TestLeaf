@@ -17,7 +17,6 @@ namespace TestLeaf
 			Driver.Manage().Window.Maximize();
 		}
 
-		//TODO Fix the getText method
 		[Test]
 		public void TestEdit()
 		{

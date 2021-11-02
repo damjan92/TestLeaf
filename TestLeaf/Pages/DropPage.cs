@@ -4,16 +4,20 @@ using System.Text;
 using TestLeaf.Helpers;
 using OpenQA.Selenium;
 using OpenQA.Selenium.Interactions;
+using TestLeaf.Base;
 
 namespace TestLeaf.Pages
 {
-	class DropPage : DriverHelper
+	class DropPage : BasePage
 	{
-		IWebElement DropClk => Driver.FindElement(By.CssSelector("a[href='pages/drop.html']"));
+        public DropPage(IWebDriver Driver) : base(Driver)
+        {
+        }
+
+        IWebElement DropClk => Driver.FindElement(By.CssSelector("a[href='pages/drop.html']"));
 		IWebElement DragElement => Driver.FindElement(By.CssSelector("#draggable"));
 		IWebElement DropElement => Driver.FindElement(By.CssSelector("#droppable"));
 
-		CustomMethods customMethods = new CustomMethods();
 
 		public void Dropping()
 		{
@@ -24,7 +28,7 @@ namespace TestLeaf.Pages
 		}
 		public void PerformDropPage()
 		{
-			customMethods.Click(DropClk);
+			CustomMethods.Click(DropClk);
 			Dropping();
 		}
 

@@ -4,15 +4,19 @@ using System.Text;
 using TestLeaf.Helpers;
 using OpenQA.Selenium;
 using OpenQA.Selenium.Interactions;
+using TestLeaf.Base;
 
 namespace TestLeaf.Pages
 {
-	class DragPage : DriverHelper
+	class DragPage : BasePage
 	{
-		IWebElement DragClk => Driver.FindElement(By.CssSelector("a[href='pages/drag.html']"));
+        public DragPage(IWebDriver Driver) : base(Driver)
+        {
+        }
+
+        IWebElement DragClk => Driver.FindElement(By.CssSelector("a[href='pages/drag.html']"));
 		IWebElement DragElement => Driver.FindElement(By.CssSelector("#draggable"));
 
-		CustomMethods customMethods = new CustomMethods();
 
 		public void Draging()
         {
@@ -24,7 +28,7 @@ namespace TestLeaf.Pages
 
 		public void PerformDragPage()
         {
-			customMethods.Click(DragClk);
+			CustomMethods.Click(DragClk);
 			Draging();
 
 		}

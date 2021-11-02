@@ -7,43 +7,45 @@ using OpenQA.Selenium.Chrome;
 using System.Threading;
 using OpenQA.Selenium.Support.UI;
 using System.IO;
+using TestLeaf.Base;
 
 namespace TestLeaf.Pages
 {
-    class DownloadPage : DriverHelper
-    {
+	class DownloadPage : BasePage
+	{
+        public DownloadPage(IWebDriver Driver) : base(Driver)
+        {
+        }
 
         IWebElement DownloadClk => Driver.FindElement(By.CssSelector("a[href='pages/download.html']"));
-        IWebElement XlxDownload => Driver.FindElement(By.LinkText("Download Excel"));
+		IWebElement XlxDownload => Driver.FindElement(By.LinkText("Download Excel"));
 
-        CustomMethods customMethods = new CustomMethods();
-        CustomLogger customLogger = new CustomLogger();
 
-        public void VerifyFileDownload()
-        {
-            string expectedPath = @"C:\Users\DamjanDosen\Downloads\testleaf.xlsx";
-            bool IsFileExist = false;
+		public void VerifyFileDownload()
+		{
+			string expectedPath = @"C:\Users\DamjanDosen\Downloads\testleaf.xlsx";
+			bool IsFileExist = false;
 
-            ChromeOptions chromeOptions = new ChromeOptions();
-            chromeOptions.AddUserProfilePreference("download.default_directory", @"c:\downloads");
+			ChromeOptions chromeOptions = new ChromeOptions();
+			chromeOptions.AddUserProfilePreference("download.default_directory", @"c:\downloads");
 
-            customMethods.Click(XlxDownload);
-            WebDriverWait wait = new WebDriverWait(Driver, TimeSpan.FromSeconds(20));
-            wait.Until<bool>(x => IsFileExist = File.Exists(expectedPath));
+			CustomMethods.Click(XlxDownload);
+			WebDriverWait wait = new WebDriverWait(Driver, TimeSpan.FromSeconds(20));
+			wait.Until<bool>(x => IsFileExist = File.Exists(expectedPath));
 
-            if (File.Exists(expectedPath) == true)
-            {
-                customLogger.LogInfo("File are downloaded");
-            } else
-            {
-                customLogger.LogWarn("File are not downloaded");
-            }
-        }
+			if (File.Exists(expectedPath) == true)
+			{
+				LogUtil.Log("File are downloaded");
+			} else
+			{
+				LogUtil.Log("File are not downloaded");
+			}
+		}
 
-        public void PerfromDownloadPage()
-        {
-            customMethods.Click(DownloadClk);
-            VerifyFileDownload();
-        }
-    }
+		public void PerfromDownloadPage()
+		{
+			CustomMethods.Click(DownloadClk);
+			VerifyFileDownload();
+		}
+	}
 }

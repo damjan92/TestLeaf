@@ -5,10 +5,11 @@ using OpenQA.Selenium;
 using System.Threading;
 using TestLeaf.Helpers;
 using OpenQA.Selenium.Interactions;
+using TestLeaf.Base;
 
 namespace TestLeaf.Pages
 {
-	class MouseHoverPage : DriverHelper
+	class MouseHoverPage : BasePage
 	{
 
 		IWebElement HoverClk => Driver.FindElement(By.CssSelector("a[href='pages/mouseOver.html']"));
@@ -16,35 +17,33 @@ namespace TestLeaf.Pages
 
 		IWebElement HiddenMenuSelenium => Driver.FindElement(By.LinkText("Selenium"));
 
-		CustomMethods customMethods = new CustomMethods();
-		CustomLogger customLogger = new CustomLogger();
+        public MouseHoverPage(IWebDriver Driver) : base(Driver)
+        {
+        }
 
-
-		public void Hovering()
+        public void Hovering()
 		{
 			Actions actions = new Actions(Driver);
 			actions.MoveToElement(HoverLocation)
 				.Build()
 				.Perform();
 
-            customMethods.Click(HiddenMenuSelenium);
+            CustomMethods.Click(HiddenMenuSelenium);
             var alert = Driver.SwitchTo().Alert();
            
 			if (alert.Text.Contains("Selenium"))
             {
-                //Console.WriteLine("You selected selenium");
-				customLogger.LogInfo("You selected selenium");
+				LogUtil.Log("You selected selenium");
             } else
             {
-				//Console.WriteLine("Fail");
-				customLogger.LogWarn("You did not selected selenium");
+				LogUtil.Log("You did not selected selenium");
             }
 			alert.Accept();
 		}
 
 		public void PerformHover()
 		{
-			customMethods.Click(HoverClk);
+			CustomMethods.Click(HoverClk);
 			Hovering();
 		}
 

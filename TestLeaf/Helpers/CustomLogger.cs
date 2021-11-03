@@ -8,7 +8,7 @@ namespace TestLeaf.Helpers
     {
         public static void Log(string message)
         {
-            Console.WriteLine(message);
+            Console.WriteLine("INFO: " + message);
         }
 
     }

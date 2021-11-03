@@ -5,10 +5,11 @@ using OpenQA.Selenium;
 using System.Threading;
 using TestLeaf.Helpers;
 using OpenQA.Selenium.Support.UI;
+using TestLeaf.Base;
 
 namespace TestLeaf.Pages
 {
-	class WaitMethods : DriverHelper
+	class WaitMethods : BasePage
 	{
 		//wait to disappear
 		IWebElement WaitToDisappearClk => Driver.FindElement(By.CssSelector("a[href='pages/disapper.html']"));
@@ -23,34 +24,35 @@ namespace TestLeaf.Pages
 		IWebElement WaitToAlertClk => Driver.FindElement(By.CssSelector("a[href='pages/alertappear.html']"));
 		IWebElement ClickAlert => Driver.FindElement(By.CssSelector("#alert"));
 
-		CustomMethods customMethods = new CustomMethods();
-		CustomLogger customLogger = new CustomLogger();
-	   
 
-		public void PerformWaitToDisappear()
+        public WaitMethods(IWebDriver Driver) : base(Driver)
+        {
+        }
+
+        public void PerformWaitToDisappear()
 		{
-			customMethods.Click(WaitToDisappearClk);
-			customMethods.CustomWaitMethodDisappear(DisappearingBtn);
+			CustomMethods.Click(WaitToDisappearClk);
+			CustomMethods.CustomWaitMethodDisappear(DisappearingBtn);
 			Driver.Navigate().Back();
 		}
 
 		public void PerformWaitToAppear()
 		{
-			customMethods.Click(WaitToAppearClk);
-			customMethods.CustomWaitMethod(AppearingBtn);
+			CustomMethods.Click(WaitToAppearClk);
+			CustomMethods.CustomWaitMethod(AppearingBtn);
 			Driver.Navigate().Back();
 		}
 
 		public void PerformWaitForChange()
 		{
-			customMethods.Click(WaitToChangeClk);
+			CustomMethods.Click(WaitToChangeClk);
 
 			WebDriverWait wait = new WebDriverWait(Driver, TimeSpan.FromSeconds(15));
 			wait.Until(d =>
 			{
 				if (ChangingBtn.Displayed && ChangingBtn.Text.Contains("Click"))
 				{
-					customLogger.LogInfo("Element is changed");
+					LogUtil.Log("Element is changed");
 					return ChangingBtn;
 				}
 				return null;
@@ -60,8 +62,8 @@ namespace TestLeaf.Pages
 
 		public void PerformWaitForAlert()
         {
-			customMethods.Click(WaitToAlertClk);
-			customMethods.Click(ClickAlert);
+			CustomMethods.Click(WaitToAlertClk);
+			CustomMethods.Click(ClickAlert);
 
 
 			WebDriverWait wait = new WebDriverWait(Driver, TimeSpan.FromSeconds(15));
@@ -71,7 +73,7 @@ namespace TestLeaf.Pages
 
 				if (alert != null)
                 {
-					customLogger.LogInfo("Alert is active");
+					LogUtil.Log("Alert is active");
 					alert.Accept();
 					return alert;
                 }

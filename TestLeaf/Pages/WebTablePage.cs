@@ -4,19 +4,21 @@ using System.Text;
 using OpenQA.Selenium;
 using System.Threading;
 using TestLeaf.Helpers;
+using TestLeaf.Base;
 
 namespace TestLeaf.Pages
 {
-	class WebTablePage : DriverHelper
+	class WebTablePage : BasePage
 	{
 		IWebElement WebTableClk => Driver.FindElement(By.CssSelector("a[href='pages/sorttable.html']"));
 
         readonly IReadOnlyCollection<IWebElement> ListofNames = Driver.FindElements(By.ClassName("sorting_1"));
 
-		CustomMethods customMethods = new CustomMethods();
+        public WebTablePage(IWebDriver Driver) : base(Driver)
+        {
+        }
 
-		
-		public void getNames()
+        public void getNames()
 		{
             foreach (var item in ListofNames)
             {
@@ -27,7 +29,7 @@ namespace TestLeaf.Pages
 
 		public void PerformWebTeblePage()
 		{
-			customMethods.Click(WebTableClk);
+			CustomMethods.Click(WebTableClk);
 			Thread.Sleep(500);
 			getNames();
 		}

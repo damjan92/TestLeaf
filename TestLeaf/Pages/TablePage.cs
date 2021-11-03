@@ -3,11 +3,12 @@ using System.Collections.Generic;
 using System.Text;
 using System.Threading;
 using OpenQA.Selenium;
+using TestLeaf.Base;
 using TestLeaf.Helpers;
 
 namespace TestLeaf.Pages
 {
-	class TablePage : DriverHelper
+	class TablePage : BasePage
 	{
 		IWebElement Tableclick => Driver.FindElement(By.XPath("//a[@href='pages/table.html']"));
 		IList<IWebElement> tableRows => Driver.FindElements(By.TagName("tr"));
@@ -15,22 +16,23 @@ namespace TestLeaf.Pages
 		IWebElement valueTd => Driver.FindElement(By.XPath("//tbody/tr[3]/td[2]"));
 		IList<IWebElement> valueCols => Driver.FindElements(By.CssSelector("tbody tr td:nth-child(2)"));
 
+        public TablePage(IWebDriver Driver) : base(Driver)
+        {
+        }
 
-		CustomMethods customMethods = new CustomMethods();
-
-		public void NumOfRows()
+        public void NumOfRows()
 		{
-			Console.WriteLine("Numbers of rows: " + tableRows.Count);
+			LogUtil.Log("Numbers of rows: " + tableRows.Count);
 		}
 
 		public void NumOfCols()
 		{
-			Console.WriteLine("Numbers of collumns: " + tableCols.Count);
+			LogUtil.Log("Numbers of collumns: " + tableCols.Count);
 		}
 
 		public string GetTheProgress()
 		{
-			Console.WriteLine("The value is: " + valueTd.Text);
+			LogUtil.Log("The value is: " + valueTd.Text);
 			return valueTd.Text;
 		}
 
@@ -47,7 +49,7 @@ namespace TestLeaf.Pages
 
 		public void PerformTablePage()
 		{
-			customMethods.Click(Tableclick);
+			CustomMethods.Click(Tableclick);
 			NumOfRows();
 			NumOfCols();
 			GetTheProgress();

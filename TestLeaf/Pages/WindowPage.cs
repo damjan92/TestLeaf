@@ -5,30 +5,31 @@ using TestLeaf.Helpers;
 using OpenQA.Selenium;
 using System.Threading;
 using System.Collections.ObjectModel;
+using TestLeaf.Base;
 
 namespace TestLeaf.Pages
 {
 	// Todo
-	class WindowPage : DriverHelper
+	class WindowPage : BasePage
 	{
 		IWebElement WindowClick => Driver.FindElement(By.CssSelector("a[href='pages/Window.html']"));
 		IWebElement homePageBtn => Driver.FindElement(By.CssSelector("#home"));
 
+        public WindowPage(IWebDriver Driver) : base(Driver)
+        {
+        }
 
-		CustomMethods customMethods = new CustomMethods();
-
-		
-		public void CheckNewWindowHp()
+        public void CheckNewWindowHp()
 		{
 			//string expected_url = "http://www.leafground.com/home.html";
-			customMethods.Click(homePageBtn);
+			CustomMethods.Click(homePageBtn);
 
 			
 		}
 
 		public void PerformWindowPage()
 		{
-			customMethods.Click(WindowClick);
+			CustomMethods.Click(WindowClick);
 		}
 
 	}

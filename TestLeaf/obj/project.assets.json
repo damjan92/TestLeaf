@@ -4693,11 +4693,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\DamjanDosen\\source\\repos\\TestLeaf-master\\TestLeaf\\TestLeaf.csproj",
+      "projectUniqueName": "C:\\Users\\DamjanDosen\\Documents\\GitHub\\TestLeaf\\TestLeaf\\TestLeaf.csproj",
       "projectName": "TestLeaf",
-      "projectPath": "C:\\Users\\DamjanDosen\\source\\repos\\TestLeaf-master\\TestLeaf\\TestLeaf.csproj",
+      "projectPath": "C:\\Users\\DamjanDosen\\Documents\\GitHub\\TestLeaf\\TestLeaf\\TestLeaf.csproj",
       "packagesPath": "C:\\Users\\DamjanDosen\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\DamjanDosen\\source\\repos\\TestLeaf-master\\TestLeaf\\obj\\",
+      "outputPath": "C:\\Users\\DamjanDosen\\Documents\\GitHub\\TestLeaf\\TestLeaf\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
         "C:\\Users\\DamjanDosen\\AppData\\Roaming\\NuGet\\NuGet.Config",
@@ -4796,7 +4796,7 @@
             "privateAssets": "all"
           }
         },
-        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\5.0.401\\RuntimeIdentifierGraph.json"
+        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\5.0.402\\RuntimeIdentifierGraph.json"
       }
     }
   }

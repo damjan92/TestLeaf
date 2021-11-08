@@ -11,9 +11,9 @@ namespace TestLeaf.Pages
 {
 	class AlertsPage : BasePage
 	{
-        public AlertsPage(IWebDriver Driver) : base(Driver)
+        public AlertsPage(IWebDriver driver) : base(driver)
         {
-			//Driver = Driver;
+			Driver = driver;
         }
 
         IWebElement AlertsClick => Driver.FindElement(By.CssSelector("a[href='pages/Alert.html']"));
@@ -32,7 +32,6 @@ namespace TestLeaf.Pages
 			CustomMethods.Click(AlertBoxClk);
 			var alert = Driver.SwitchTo().Alert();
 			alert.Accept();
-			//Console.WriteLine("Alert is accpeted");
 			LogUtil.Log("Alert is accepted");
 
 		}
@@ -44,12 +43,10 @@ namespace TestLeaf.Pages
 			alert.Accept();
 			if (resultAlert.Displayed == true)
 			{
-				//Console.WriteLine("You pressed OK");
 				LogUtil.Log("You pressed OK");
 				return true;
 			} else
 			{
-				//Console.WriteLine("You didnt press ok");
 				LogUtil.Log("You did not press ok");
 				CustomMethods.TakeScreenshot(AlertConfirm);
 				return false;
@@ -63,13 +60,11 @@ namespace TestLeaf.Pages
 			alert.Accept();
 			if (!resultPromt.Text.Contains("not") == true)
 			{
-				//Console.WriteLine("You are enjoying Testleaf");
 				LogUtil.Log("You are enjoying Testleaf");
 				return true;
 			}
 			else
 			{
-				//Console.WriteLine("You are not enjoying Testleaf");
 				LogUtil.Log("You are not enjoying Testleaf");
 				CustomMethods.TakeScreenshot(PromtAlert);
 				return false;
@@ -80,7 +75,6 @@ namespace TestLeaf.Pages
 		{
 			CustomMethods.Click(LineBreak);
 			var alert = Driver.SwitchTo().Alert();
-			Console.WriteLine("Alert text is  \n" + alert.Text);
 			LogUtil.Log("Alert text is  \n" + alert.Text);
 			alert.Accept();
 		}

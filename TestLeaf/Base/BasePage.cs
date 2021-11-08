@@ -7,14 +7,15 @@ using System.Text;
 
 namespace TestLeaf.Base
 {
-	class BasePage
+	public class BasePage
 	{
+
 		public static IWebDriver Driver;
 
-        public BasePage(IWebDriver Driver)
-		{
-			//Driver = Driver;
-		}
+        public BasePage(IWebDriver driver)
+        {
+			Driver = driver;
+        }
 
 	}
 }

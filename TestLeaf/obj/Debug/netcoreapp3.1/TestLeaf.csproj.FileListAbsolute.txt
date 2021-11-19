@@ -319,3 +319,4 @@ C:\Users\DamjanDosen\Documents\GitHub\TestLeaf\TestLeaf\obj\Debug\netcoreapp3.1\
 C:\Users\DamjanDosen\Documents\GitHub\TestLeaf\TestLeaf\obj\Debug\netcoreapp3.1\TestLeaf.dll
 C:\Users\DamjanDosen\Documents\GitHub\TestLeaf\TestLeaf\obj\Debug\netcoreapp3.1\TestLeaf.pdb
 C:\Users\DamjanDosen\Documents\GitHub\TestLeaf\TestLeaf\obj\Debug\netcoreapp3.1\TestLeaf.genruntimeconfig.cache
+C:\Users\DamjanDosen\Documents\GitHub\TestLeaf\TestLeaf\obj\Debug\netcoreapp3.1\TestLeaf.csproj.AssemblyReference.cache

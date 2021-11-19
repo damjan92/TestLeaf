@@ -8,40 +8,49 @@ using OpenQA.Selenium.Firefox;
 
 namespace TestLeaf.Base
 {
+	[TestFixture]
+	public class BaseTest
+	{
+        
+        public static IWebDriver Driver;
 
-    public class BaseTest
-    {
-
-		public static IWebDriver Driver;
-
-		
-
-        [OneTimeSetUp]
-        public static void Prepare()
+        private IWebDriver InitializeDriver(Enums.BrowserType browserType)
         {
-            ChromeOptions chromeOptions = new ChromeOptions();
-            Driver = new ChromeDriver(chromeOptions);
+            switch(browserType)
+            {
+                case Enums.BrowserType.Chrome:
+                    ChromeOptions chromeOptions = new ChromeOptions();
+                    return new ChromeDriver(chromeOptions);
+                case Enums.BrowserType.Firefox:
+                    return new FirefoxDriver();
+                default:
+                    throw new ArgumentException($"Unknown argument value {browserType}", nameof(browserType));
+            }
+        }
+       
+        [OneTimeSetUp]
+		public  void Prepare()
+		{
+            Driver = InitializeDriver(Enums.BrowserType.Chrome);
         }
 
-        [SetUp]
+		[SetUp]
 		public void Setup()
 		{
-			Driver.Navigate().GoToUrl("http://www.leafground.com/");
-			Driver.Manage().Window.Maximize();
-			//ChromeOptions chromeOptions = new ChromeOptions();
-			//Driver = new ChromeDriver(chromeOptions);
-		}
+            Driver.Navigate().GoToUrl("http://www.leafground.com/");
+            Driver.Manage().Window.Maximize();
+        }
 
-        /*[TearDown]
-        public void Assertion()
-        {
-            Assert.Pass();
-        }*/
-
-        [OneTimeTearDown]
-        public static void Clean()
+        [TearDown]
+        public void Close()
         {
             Driver.Close();
         }
-    }
+
+        [OneTimeTearDown]
+		public static void Clean()
+		{
+            Driver.Quit();
+        }
+	}
 }

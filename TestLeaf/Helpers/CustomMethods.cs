@@ -10,9 +10,9 @@ namespace TestLeaf.Helpers
 {
 	class CustomMethods : BasePage
 	{
-        public CustomMethods(IWebDriver Driver) : base(Driver)
+        public CustomMethods(IWebDriver driver) : base(driver)
         {
-			//this.Driver = Driver;
+			Driver = driver;
         }
 	
         //Set methods

@@ -4,7 +4,6 @@ using System.Text;
 using OpenQA.Selenium;
 using TestLeaf.Base;
 using TestLeaf.Helpers;
-
 using System.Threading;
 
 namespace TestLeaf.Pages

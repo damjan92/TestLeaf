@@ -5,18 +5,21 @@ using OpenQA.Selenium;
 using System.Threading;
 using TestLeaf.Helpers;
 using OpenQA.Selenium.Interactions;
+using TestLeaf.Base;
 
 namespace TestLeaf.Pages
 {
-    class ToolTipPage : DriverHelper
+    class ToolTipPage : BasePage
     {
         IWebElement ToolTipClk => Driver.FindElement(By.CssSelector("a[href = 'pages/tooltip.html']"));
 
         IWebElement getLocation => Driver.FindElement(By.CssSelector("#age"));
 
-        CustomMethods customMethods = new CustomMethods();
+        public ToolTipPage(IWebDriver Driver) : base(Driver)
+        {
+        }
 
-       public void Hover()
+        public void Hover()
         {
            
             Actions actions = new Actions(Driver);
@@ -26,7 +29,7 @@ namespace TestLeaf.Pages
 
         public void PerformToolTipPage()
         {
-            customMethods.Click(ToolTipClk);
+            CustomMethods.Click(ToolTipClk);
             Hover();
             Thread.Sleep(1000);
         }

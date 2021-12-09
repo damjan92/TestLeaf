@@ -2,14 +2,20 @@
 using System.Collections.Generic;
 using System.Text;
 using OpenQA.Selenium;
+using TestLeaf.Base;
 using TestLeaf.Helpers;
 using System.Threading;
 
 namespace TestLeaf.Pages
 {
-	class AlertsPage : DriverHelper
+	class AlertsPage : BasePage
 	{
-		IWebElement AlertsClick => Driver.FindElement(By.CssSelector("a[href='pages/Alert.html']"));
+        public AlertsPage(IWebDriver driver) : base(driver)
+        {
+			Driver = driver;
+        }
+
+        IWebElement AlertsClick => Driver.FindElement(By.CssSelector("a[href='pages/Alert.html']"));
 		IWebElement AlertBoxClk => Driver.FindElement(By.CssSelector("button[onclick='normalAlert()']"));
 		IWebElement AlertConfirm => Driver.FindElement(By.CssSelector("button[onclick='confirmAlert()']"));
 		IWebElement resultAlert => Driver.FindElement(By.CssSelector("#result"));
@@ -18,77 +24,70 @@ namespace TestLeaf.Pages
 		IWebElement LineBreak => Driver.FindElement(By.CssSelector("button[onclick='lineBreaks()']"));
 		IWebElement SweetAlert => Driver.FindElement(By.CssSelector("#btn"));
 
-		CustomMethods customMethods = new CustomMethods();
-		CustomLogger customLogger = new CustomLogger();
+		
 
 		public void ClickAlertBox()
-        {
-            customMethods.Click(AlertBoxClk);
+		{
+			CustomMethods.Click(AlertBoxClk);
 			var alert = Driver.SwitchTo().Alert();
 			alert.Accept();
-			//Console.WriteLine("Alert is accpeted");
-			customLogger.LogInfo("Alert is accepted");
+			LogUtil.Log("Alert is accepted");
 
-        }
+		}
 
 		public bool ConfirmBox()
-        {
-			customMethods.Click(AlertConfirm);
+		{
+			CustomMethods.Click(AlertConfirm);
 			var alert = Driver.SwitchTo().Alert();
 			alert.Accept();
 			if (resultAlert.Displayed == true)
-            {
-				//Console.WriteLine("You pressed OK");
-				customLogger.LogInfo("You pressed OK");
+			{
+				LogUtil.Log("You pressed OK");
 				return true;
-            } else
-            {
-				//Console.WriteLine("You didnt press ok");
-				customLogger.LogWarn("You did not press ok");
-				customMethods.TakeScreenshot(AlertConfirm);
+			} else
+			{
+				LogUtil.Log("You did not press ok");
+				CustomMethods.TakeScreenshot(AlertConfirm);
 				return false;
-            }
-        }
+			}
+		}
 		public bool PromptBox()
 		{
-			customMethods.Click(PromtAlert);
+			CustomMethods.Click(PromtAlert);
 			var alert = Driver.SwitchTo().Alert();
 			alert.SendKeys("TestLeaf");
 			alert.Accept();
 			if (!resultPromt.Text.Contains("not") == true)
 			{
-				//Console.WriteLine("You are enjoying Testleaf");
-				customLogger.LogInfo("You are enjoying Testleaf");
+				LogUtil.Log("You are enjoying Testleaf");
 				return true;
 			}
 			else
 			{
-				//Console.WriteLine("You are not enjoying Testleaf");
-				customLogger.LogWarn("You are not enjoying Testleaf");
-				customMethods.TakeScreenshot(PromtAlert);
+				LogUtil.Log("You are not enjoying Testleaf");
+				CustomMethods.TakeScreenshot(PromtAlert);
 				return false;
 			}
 		}
 
 		public void getAlerTText()
-        {
-			customMethods.Click(LineBreak);
+		{
+			CustomMethods.Click(LineBreak);
 			var alert = Driver.SwitchTo().Alert();
-            Console.WriteLine("Alert text is  \n" + alert.Text);
-			customLogger.LogInfo("Alert text is  \n" + alert.Text);
+			LogUtil.Log("Alert text is  \n" + alert.Text);
 			alert.Accept();
-        }
+		}
 
 		/*public void SweetAlertBtn()
-        {
+		{
 			customMethods.Click(SweetAlert);
 			var alert = Driver.SwitchTo().Alert();
 			alert.Accept();
-        }*/
+		}*/
 
 		public void PerformAlertPage()
 		{
-			customMethods.Click(AlertsClick);
+			CustomMethods.Click(AlertsClick);
 			ClickAlertBox();
 			Thread.Sleep(500);
 			ConfirmBox();

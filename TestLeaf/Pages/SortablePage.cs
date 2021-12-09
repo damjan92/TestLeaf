@@ -4,18 +4,21 @@ using System.Text;
 using TestLeaf.Helpers;
 using OpenQA.Selenium;
 using OpenQA.Selenium.Interactions;
+using TestLeaf.Base;
 
 namespace TestLeaf.Pages
 {
-	class SortablePage : DriverHelper
+	class SortablePage : BasePage
 	{
 		IWebElement SortableClk => Driver.FindElement(By.CssSelector("a[href='pages/sortable.html']"));
 		IWebElement ItemOne => Driver.FindElement(By.CssSelector("div[id='mydiv'] li:nth-child(1)"));
 		IWebElement ItemTwo => Driver.FindElement(By.CssSelector("li:nth-child(7)"));
 
-		CustomMethods customMethods = new CustomMethods();
+        public SortablePage(IWebDriver Driver) : base(Driver)
+        {
+        }
 
-		public void SortTheFirstItem()
+        public void SortTheFirstItem()
 		{
 			Actions actions = new Actions(Driver);
 
@@ -35,7 +38,7 @@ namespace TestLeaf.Pages
 
 		public void PerformSortablePage()
 		{
-			customMethods.Click(SortableClk);
+			CustomMethods.Click(SortableClk);
 			SortTheFirstItem();
 			SortTheSecondItem();
 		}

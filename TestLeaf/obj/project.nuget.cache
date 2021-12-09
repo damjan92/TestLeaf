@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "vx8SePgowVUuZVPrDDfRpNNRAl2BEk359RsCYBvqhRNc09ASNtb2dX/BTlMXCMeHpCUibGq+HfOaCDnJy7mv5Q==",
+  "dgSpecHash": "TrRwsfOBzSBSOyA9MyjoM6TtD0S5nEJvtCMxR4/l+a6DDgg34cu1w1iWRH5dCGCcZWeG1ajHOg6+BdpiVoET+A==",
   "success": true,
-  "projectFilePath": "C:\\Users\\DamjanDosen\\source\\repos\\TestLeaf-master\\TestLeaf\\TestLeaf.csproj",
+  "projectFilePath": "C:\\Users\\DamjanDosen\\Documents\\GitHub\\TestLeaf\\TestLeaf\\TestLeaf.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\DamjanDosen\\.nuget\\packages\\coverlet.collector\\3.1.0\\coverlet.collector.3.1.0.nupkg.sha512",
     "C:\\Users\\DamjanDosen\\.nuget\\packages\\microsoft.codecoverage\\16.11.0\\microsoft.codecoverage.16.11.0.nupkg.sha512",

@@ -3,11 +3,12 @@ using System.Collections.Generic;
 using System.Text;
 using System.Threading;
 using OpenQA.Selenium;
+using TestLeaf.Base;
 using TestLeaf.Helpers;
 
 namespace TestLeaf.Pages
 {
-	class RadioButtonPage : DriverHelper
+	class RadioButtonPage : BasePage
 	{
 		IWebElement radioButtonIcn => Driver.FindElement(By.CssSelector("a[href='pages/radio.html']"));
 		IWebElement yesOption => Driver.FindElement(By.CssSelector("#yes"));
@@ -18,18 +19,20 @@ namespace TestLeaf.Pages
 		IWebElement secondValue => Driver.FindElement(By.XPath("//input[2]"));
 		IWebElement thirdValue => Driver.FindElement(By.XPath("//input[@value='2']"));
 
-		CustomMethods customMethods = new CustomMethods();
-		CustomLogger customLogger = new CustomLogger();
 
-		public void DefaultBtn()
+        public RadioButtonPage(IWebDriver Driver) : base(Driver)
+        {
+        }
+
+        public void DefaultBtn()
         {
 			if (defaultBtn.Text.Contains("Checked"))
             {
-                customLogger.LogInfo("Check button is already clicked");
+				LogUtil.Log("Check button is already clicked");
             } else
             {
-				customLogger.LogInfo("Uncheck button is unchecked");
-				customMethods.Click(uncheckedBtn);
+				LogUtil.Log("Uncheck button is unchecked");
+				CustomMethods.Click(uncheckedBtn);
             }
         }
 
@@ -37,27 +40,26 @@ namespace TestLeaf.Pages
         {
 			if (AgeButtons.Text.Contains("21"))
 			{
-				customLogger.LogInfo("My group age is clicked");
+				LogUtil.Log("My group age is clicked");
             }
 			else if (AgeButtons.Text.Contains("20"))
             {
-				customMethods.Click(firstValue);
-				customLogger.LogInfo("1-20 group age is selected");
+				CustomMethods.Click(firstValue);
+				LogUtil.Log("1-20 group age is selected");
             }
 			else
             {
-				customMethods.Click(thirdValue);
-				customLogger.LogInfo("Above 40 group age is selected");
+				CustomMethods.Click(thirdValue);
+				LogUtil.Log("Above 40 group age is selected");
 			}
         }
 
 		public void PerformRadioButtonPage()
 		{
-			customMethods.Click(radioButtonIcn);
-			customMethods.Click(yesOption);
+			CustomMethods.Click(radioButtonIcn);
+			CustomMethods.Click(yesOption);
 			DefaultBtn();
 			AgeChecker();
-			//Thread.Sleep(1500);
 		}
 	}
 }

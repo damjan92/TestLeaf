@@ -4,16 +4,19 @@ using System.Text;
 using TestLeaf.Helpers;
 using OpenQA.Selenium;
 using OpenQA.Selenium.Interactions;
+using TestLeaf.Base;
 
 namespace TestLeaf.Pages
 {
-    class SelectablePage : DriverHelper
+    class SelectablePage : BasePage
     {
         IWebElement SelectableClk => Driver.FindElement(By.CssSelector("a[href='pages/selectable.html']"));
 
         IWebElement StartLocation => Driver.FindElement(By.CssSelector("div[id='content'] li:nth-child(1)"));
 
-        CustomMethods customMethods = new CustomMethods();
+        public SelectablePage(IWebDriver Driver) : base(Driver)
+        {
+        }
 
         public void Selecting()
         {
@@ -25,7 +28,7 @@ namespace TestLeaf.Pages
 
         public void PerformSelectablePage()
         {
-            customMethods.Click(SelectableClk);
+            CustomMethods.Click(SelectableClk);
             Selecting();
         }
     }

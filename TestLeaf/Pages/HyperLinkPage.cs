@@ -3,63 +3,66 @@ using System.Collections.Generic;
 using System.Text;
 using TestLeaf.Helpers;
 using OpenQA.Selenium;
+using TestLeaf.Base;
 
 namespace TestLeaf.Pages
 {
-    class HyperLinkPage : DriverHelper
+    class HyperLinkPage : BasePage
     {
-		IWebElement hyperLinkClk => Driver.FindElement(By.XPath("//a[@href='pages/Link.html']"));
+        public HyperLinkPage(IWebDriver Driver) : base(Driver)
+        {
+        }
+
+        IWebElement hyperLinkClk => Driver.FindElement(By.XPath("//a[@href='pages/Link.html']"));
         IWebElement homepagelnk => Driver.FindElement(By.XPath("//div[@id='contentblock']//div[1]//div[1]//div[1]//a[1]"));
 		IWebElement headerTag => Driver.FindElement(By.TagName("h1"));
 		IWebElement destinationLnk => Driver.FindElement(By.PartialLinkText("Find where am suppos"));
 		IWebElement isBroken => Driver.FindElement(By.CssSelector("a[href='error.html']"));
 		IWebElement httpStatus => Driver.FindElement(By.TagName("h1"));
 
-		CustomMethods customMethods = new CustomMethods();
-		CustomLogger customLogger = new CustomLogger();
 
 		public void homePageLink()
 		{
-			customMethods.Click(homepagelnk);
+			CustomMethods.Click(homepagelnk);
 			if (headerTag.Displayed)
 			{
-				customLogger.LogInfo("Home page link works");
+				LogUtil.Log("Home page link works");
 				Driver.Navigate().Back();
 			}
 			else
 			{
-				customLogger.LogWarn("HomePage link doesnt work");
-				customMethods.TakeScreenshot(homepagelnk);
+				LogUtil.Log("HomePage link doesnt work");
+				CustomMethods.TakeScreenshot(homepagelnk);
 			}
 		}
 
 		public void CheckDestination()
         {
-			customMethods.Click(destinationLnk);
+			CustomMethods.Click(destinationLnk);
 			var dest = Driver.Url;
-			customLogger.LogInfo("URL is: " + dest);
+			LogUtil.Log("URL is: " + dest);
 			Driver.Navigate().Back();
 		}
 
 		public bool CheckAvailability()
         {
-			customMethods.Click(isBroken);
+			CustomMethods.Click(isBroken);
 			if (httpStatus.Text.Contains("404"))
             {
-				customLogger.LogInfo("Site is not available, msg is 404");
+				LogUtil.Log("Site is not available, msg is 404");
 				Driver.Navigate().Back();
 				return false;
             } 
 			else
             {
-				customLogger.LogInfo("Site is available");
+				LogUtil.Log("Site is available");
 				return true;
 			}
         }
 
 		public void PerformHyperLink()
         {
-			customMethods.Click(hyperLinkClk);
+			CustomMethods.Click(hyperLinkClk);
 			homePageLink();
 			CheckDestination();
 			CheckAvailability();

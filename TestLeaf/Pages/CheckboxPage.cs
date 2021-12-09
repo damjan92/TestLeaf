@@ -5,13 +5,18 @@ using System.Threading;
 using OpenQA.Selenium;
 using OpenQA.Selenium.Interactions;
 using OpenQA.Selenium.Support.UI;
+using TestLeaf.Base;
 using TestLeaf.Helpers;
 
 namespace TestLeaf.Pages
 {
-	class CheckboxPage : DriverHelper
+	class CheckboxPage : BasePage
 	{
-		IWebElement clickCheckbox => Driver.FindElement(By.XPath("//a[@href='pages/checkbox.html']"));
+        public CheckboxPage(IWebDriver Driver) : base(Driver)
+        {
+        }
+
+        IWebElement clickCheckbox => Driver.FindElement(By.XPath("//a[@href='pages/checkbox.html']"));
 		IWebElement selectJava => Driver.FindElement(By.XPath
 			("//div[normalize-space()='Java']//input[@type='checkbox']"));
 		IWebElement selectVB => Driver.FindElement(By.XPath
@@ -24,53 +29,51 @@ namespace TestLeaf.Pages
 			("//div[normalize-space()='Option 1']//input[@type='checkbox']"));
 	
 
-        CustomMethods customMethods = new CustomMethods();
-		CustomLogger customLogger = new CustomLogger();
 
 		public void SelectLng()
 		{
-			customMethods.Click(selectJava);
-			customMethods.Click(selectVB);
-			customLogger.LogInfo("Languages are selected");
+			CustomMethods.Click(selectJava);
+			CustomMethods.Click(selectVB);
+			LogUtil.Log("Languages are selected");
 		}
 
 		public bool IsSelected()
 		{
 			if(IsSeleneiumSlctd.Selected == true)
 			{
-				customLogger.LogInfo("Checkbox is selected");
+				LogUtil.Log("Checkbox is selected");
 				return true;
 			}
 			else
 			{
-				customLogger.LogWarn("Checkbox is not selected");
+				LogUtil.Log("Checkbox is not selected");
 				return false;
 			}
 		}
 
 		public bool Deselect()
-        {
+		{
 			if (deselectCb.Selected == true)
-            {
-				customLogger.LogInfo("Checkbox is already selected");
+			{
+				LogUtil.Log("Checkbox is already selected");
 				return true;
-            }
+			}
 			else
-            {
-				customLogger.LogWarn("Checkbox is not selected, Click!");
-				customMethods.Click(deselectCb);
+			{
+				LogUtil.Log("Checkbox is not selected, Click!");
+				CustomMethods.Click(deselectCb);
 				return false;
 			}
-        }
+		}
 
 		public void SelectAll()
-        {
+		{
 			//ToDo
 		}
 
 		public void PerformCheckBoxPage()
 		{
-			customMethods.Click(clickCheckbox);
+			CustomMethods.Click(clickCheckbox);
 			SelectLng();
 			IsSelected();
 			Deselect();

@@ -4,11 +4,11 @@ using System.Text;
 using System.Threading;
 using TestLeaf.Helpers;
 using OpenQA.Selenium;
-
+using TestLeaf.Base;
 
 namespace TestLeaf.Pages
 {
-	class IFramePage : DriverHelper
+	class IFramePage : BasePage
 	{
 		IWebElement IframeClk => Driver.FindElement(By.CssSelector("a[href='pages/frame.html']"));
 		IWebElement FirstFrame => Driver.FindElement(By.XPath("//iframe[@src='default.html']"));
@@ -18,20 +18,22 @@ namespace TestLeaf.Pages
 		IList<IWebElement> Iframes => Driver.FindElements(By.XPath("//iframe"));
 		IWebElement SecondFrClk => Driver.FindElement(By.CssSelector("#Click1"));
 
-		CustomMethods customMethods = new CustomMethods();
-		CustomLogger customLogger = new CustomLogger();
+		
+        public IFramePage(IWebDriver Driver) : base(Driver)
+        {
+        }
 
-		public void iframeClick()
+        public void iframeClick()
 		{
 			Driver.SwitchTo().Frame(FirstFrame);
-			customMethods.Click(FrameClick);
+			CustomMethods.Click(FrameClick);
 			if (FrameClick.Text.Contains("Clicked"))
 			{
-				customLogger.LogInfo("You clicked the button");
+				LogUtil.Log("You clicked the button");
 			}
 			else
 			{
-				customLogger.LogWarn("You missed the frame");
+				LogUtil.Log("You missed the frame");
 			}
 			Driver.SwitchTo().DefaultContent();
 		}
@@ -40,26 +42,26 @@ namespace TestLeaf.Pages
 		{
 			Driver.SwitchTo().Frame(SecondFrame);
 			Driver.SwitchTo().Frame(NestedFrame);
-			customMethods.Click(SecondFrClk);
+			CustomMethods.Click(SecondFrClk);
 			if (SecondFrClk.Text.Contains("Clicked"))
 			{
-				customLogger.LogInfo("You clicked the button");
+				LogUtil.Log("You clicked the button");
 			}
 			else
 			{
-				customLogger.LogWarn("You missed the frame");
+				LogUtil.Log("You missed the frame");
 			}
 			Driver.SwitchTo().DefaultContent();
 		}
 
 		public void NumOfIframes()
-		{ 
-			Console.WriteLine(Iframes.Count);
+		{
+			LogUtil.Log("Number of iframes: " + Iframes.Count);
 		}
 
         public void PerformIFramePage()
 		{
-			customMethods.Click(IframeClk);
+			CustomMethods.Click(IframeClk);
 			iframeClick();
 			SecondIframeClick();
 			NumOfIframes();

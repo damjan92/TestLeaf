@@ -3,11 +3,12 @@ using System.Collections.Generic;
 using System.Text;
 using System.Threading;
 using OpenQA.Selenium;
+using TestLeaf.Base;
 using TestLeaf.Helpers;
 
 namespace TestLeaf.Pages
 {
-	class ImagePage : DriverHelper
+	class ImagePage : BasePage
 	{
 		IWebElement headerTag => Driver.FindElement(By.TagName("h1"));
 		IWebElement imageLnk => Driver.FindElement(By.CssSelector("a[href='pages/Image.html']"));
@@ -15,31 +16,31 @@ namespace TestLeaf.Pages
 		IWebElement brokenImg => Driver.FindElement(By.CssSelector("img[src='../images/abcd.jpg']"));
 		IWebElement keyboardImg => Driver.FindElement(By.XPath("//img[@src='../images/keyboard.png']"));
 
-		CustomMethods customMethods = new CustomMethods();
-		CustomLogger customLogger = new CustomLogger();
+        public ImagePage(IWebDriver Driver) : base(Driver)
+        {
+        }
 
-
-		public void homePageImg()
+        public void homePageImg()
 		{
-			customMethods.Click(imageIcn);
+			CustomMethods.Click(imageIcn);
 			if (headerTag.Enabled)
 			{
-				customLogger.LogInfo("Home page Image works");
+				LogUtil.Log("Home page Image works");
 				Driver.Navigate().Back();
 			}
 			else
 			{
-				customLogger.LogWarn("HomePage Image doesnt work");
+				LogUtil.Log("HomePage Image doesnt work");
 			}
 		}
 
 		public void PerformImagePage()
 		{
-			customMethods.Click(imageLnk);
+			CustomMethods.Click(imageLnk);
 			homePageImg();
-			customMethods.isLinkWords(brokenImg, headerTag);
-			customMethods.KeyboardActions(keyboardImg);
-			customMethods.CustomWaitMethod(headerTag);
+			CustomMethods.isLinkWords(brokenImg, headerTag);
+			CustomMethods.KeyboardActions(keyboardImg);
+			CustomMethods.CustomWaitMethod(headerTag);
 		}
 	}
 }
